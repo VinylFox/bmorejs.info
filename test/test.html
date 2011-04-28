@@ -36,9 +36,29 @@
     </div>
   </div>
   </script>
-  <script id="ExampleBackend-abstractMe" type="text/javascript">
-    function parseMeetup(data){
-        //"Tue May 24 19:00:00 EDT 2011" -> "May 24 19:00:00"
+  <script id="MeetupAPI" type="text/javascript">
+
+  function MeetupAPI(){};
+  MeetupAPI.prototype = {
+    dependencies: {
+      iCanHaz: ["https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.min.js", "ICanHaz.js"],
+      date: ["date.js"],
+      jquery: ["https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js", "jquery.js"]
+    },
+    
+    get: function(){
+      $.getJSON("api/meetup.json", this.onCollect);
+    },
+    
+    onCollect: function(meetupFeed){
+      $(document).ready(function(){ //Woo hoops to jump through.
+        Meetup.collection = meetupFeed;
+        this.render();
+      });
+    },
+    
+    parseMeetup: function(data){
+      //"Tue May 24 19:00:00 EDT 2011" -> "May 24 19:00:00"
       var date_chomped = data["time"].split(" ").slice(1,4).join(" ");
       var date = Date.parse(date_chomped);
       var meetupData= {
@@ -49,25 +69,15 @@
        name: data["name"]
       };
       return meetupData;
-    };
-    
-    function render(){
-      var meetupContainer = $("#lc");
-      var meetupViews = $.map(Meetup.collection["results"], function(apiEventData){
+    },
+
+    render: function(){
+      var meetupContainer = $("#lc"); //pull this out into the constructor
+      var meetupViews = $.map(MeetupAPI.collection["results"], function(apiEventData){
         return meetupContainer.append(ich.meetupEventView(parseMeetup(apiEventData)));
       });
-      //return meetupViews;
-    };
-    
-  </script>
-  <script id="test-interface" type="text/javascript">
-    var Meetup = {};
-    Meetup.onCollect = function(meetupFeed){
-      $(document).ready(function(){ //Woo hoops to jump through.
-           Meetup.collection = meetupFeed;
-            render();
-          });
-    };
+    }
+  };
   </script>
   <script type="text/javascript" src="meetup.json">
   //I don't expect we'll need to do this kind of jsonp-style include in production, but for local testing, you can't do "file://" ajax requests.
