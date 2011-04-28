@@ -37,7 +37,28 @@
   </div><!--end wrapper-->
 <script type="application/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <script type="application/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="application/javascript" src="static/js/vendor/ICanHaz.min.js"></script>
 <script type="application/javascript" src="static/js/site.js"></script>
+<script type="application/javascript">
+  $(document).ready(function(){
+    MeetupAPI.getEvents();
+  });
+</script>
+
+<script id="meetupEventView" type="text/html">
+<div class="meetup">
+  <div class="descript">
+    <h2>{{name}}</h2>
+    {{{description}}}
+  </div>
+  <div class="date_time">
+    <h3>{{day}}</h3>
+    <h4>{{hour}}</h4>
+    <h5>{{rsvps}} rsvp</h5>
+  </div>
+</div>
+</script>
+
 <script>
 var _gaq = [['_setAccount', 'UA-34607255-1'], ['_trackPageview']];
 (function(d, t) {

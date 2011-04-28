@@ -3,14 +3,16 @@ var MeetupAPI = {
     iCanHaz: ["https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.min.js", "ICanHaz.js"],
     date: ["date.js"],
     jquery: ["https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js", "jquery.js"]
+	// Also, callers should ensure that ich.meetupEventView({}) is implemented, for MeetupAPI.render to run.
   },
-  
-  get: function(){
-    $.getJSON("api/meetup.json", this.onCollect);
+
+  getEvents: function(){
+	//This doesn't seem to be making the requests correctly. Needs more attention.
+    $.getJSON("api/meetup.json", MeetupAPI.onCollect); 
   },
   
   onCollect: function(meetupFeed){
-    $(document).ready(function(){ //Woo hoops to jump through.
+    $(document).ready(function(){ 
       MeetupAPI.collection = meetupFeed;
       MeetupAPI.render();
     });
@@ -31,7 +33,7 @@ var MeetupAPI = {
   },
 
   render: function(){
-    var meetupContainer = $("#lc"); //pull this out into the constructor
+    var meetupContainer = $("#lc"); //[TODO] pull this out into the constructor
     var meetupViews = $.map(MeetupAPI.collection["results"], function(apiEventData){
       return meetupContainer.append(ich.meetupEventView(MeetupAPI.parseMeetup(apiEventData)));
     });
