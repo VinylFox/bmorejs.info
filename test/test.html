@@ -38,8 +38,7 @@
   </script>
   <script id="MeetupAPI" type="text/javascript">
 
-  function MeetupAPI(){};
-  MeetupAPI.prototype = {
+  var MeetupAPI = {
     dependencies: {
       iCanHaz: ["https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.min.js", "ICanHaz.js"],
       date: ["date.js"],
@@ -52,8 +51,8 @@
     
     onCollect: function(meetupFeed){
       $(document).ready(function(){ //Woo hoops to jump through.
-        Meetup.collection = meetupFeed;
-        this.render();
+        MeetupAPI.collection = meetupFeed;
+        MeetupAPI.render();
       });
     },
     
@@ -74,7 +73,7 @@
     render: function(){
       var meetupContainer = $("#lc"); //pull this out into the constructor
       var meetupViews = $.map(MeetupAPI.collection["results"], function(apiEventData){
-        return meetupContainer.append(ich.meetupEventView(parseMeetup(apiEventData)));
+        return meetupContainer.append(ich.meetupEventView(MeetupAPI.parseMeetup(apiEventData)));
       });
     }
   };
