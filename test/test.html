@@ -10,7 +10,7 @@
     //min: https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.min.js
   </script>
 
-  <script type="text/javascript" src="date.js">
+  <script type="text/javascript" src="../static/js/vendor/date.js">
   //Date parsing and formatting.
   //from: http://www.datejs.com/
   </script>
@@ -28,9 +28,13 @@
   </div>
   </script>
   <script type="application/javascript" src="../static/js/site.js"></script>
+
+
+
   <script type="text/javascript" src="meetup.json">
   //I don't expect we'll need to do this kind of jsonp-style include in production, but for local testing, you can't do "file://" ajax requests.
-  //So this include, and the previous call-point are the main differences in the test files vs the main files.
+  //So this include is the main difference between the test file vs the main file.
+  //Also it's a good place to work when disconnected from the web.
   </script>
 </head>
 <body>
