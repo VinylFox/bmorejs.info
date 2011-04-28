@@ -18,6 +18,9 @@
   //min: http://documentcloud.github.com/backbone/backbone-min.js
   </script>
   -->
+  <script type="text/javascript" src="date.js">
+  //from: http://www.datejs.com/
+  </script>
   <script id="meetupEventView" type="text/html">
   <div class="meetup">
     <div class="descript">
@@ -33,11 +36,13 @@
   </script>
   <script id="ExampleBackend-abstractMe" type="text/javascript">
     function parseMeetup(data){
+        //"Tue May 24 19:00:00 EDT 2011" -> "May 24 19:00:00"
+      var date_chomped = data["time"].split(" ").slice(1,4).join(" ");
+      var date = Date.parse(date_chomped);
       var meetupData= {
-       rsvpcount: data["rsvpcount"],
-       hour: function(){ return data["time"].split(" ")[3].split(":")[0] - 12; },
-       minute: function(){ return data["time"].split(" ")[3].split(":")[1];},
-       day: function(){ return data["time"].split(" ").slice(0,3).join(" "); },
+       rsvps: data["rsvpcount"],
+       day: date.toString("M/d"),
+       hour: date.toString("h:mmp"),
        description: data["description"], // Use {{{}}} because this has inline html
        name: data["name"]
       };
