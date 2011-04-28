@@ -19,16 +19,17 @@
   </script>
   -->
   <script id="meetupEventView" type="text/html">
-  <li>
-  <div class="datetime">
-   <span class="hour">{{hour}}:{{minute}}</span>
-   <span class="day">{{day}}</span>
+  <div class="meetup">
+    <div class="descript">
+      <h2>{{name}}</h2>
+      {{{description}}}
+    </div>
+    <div class="date_time">
+      <h3>{{day}}</h3>
+      <h4>{{hour}}</h4>
+      <h5>{{rsvps}} rsvp</h5>
+    </div>
   </div>
-  <div class="info">
-   <span class="name">{{name}}</span>
-   <span class="description">{{{description}}}</span>
-  </div>
-  </li>
   </script>
   <script id="ExampleBackend-abstractMe" type="text/javascript">
     function parseMeetup(data){
@@ -44,7 +45,7 @@
     };
     
     function render(){
-      var meetupContainer = $("#meetup-container");
+      var meetupContainer = $("#lc");
       var meetupViews = $.map(Meetup.collection["results"], function(apiEventData){
         return meetupContainer.append(ich.meetupEventView(parseMeetup(apiEventData)));
       });
@@ -68,12 +69,22 @@
 </head>
 <body>
   <div class="head">
-  <h1 id="logo"><a href="/test/index.html">BmoreJS.info</a></h1>
+  <h1 id="logo"><a href="test.html">BmoreJS.info</a></h1>
   </div>
-  <div class="content">
-    <ul id="meetup-container">
-      
-    </ul>
+  <div id="content">
+    <div id="lc">
+      <div class="meetup">
+        <div class="descript">
+          <h2>Practical CouchDB with Mark Headd</h2>
+          <p>CouchDB is a great little NoSQL document store. Like many other NoSQL solutions, it uses Javascript for it's map-reduce / view code. Couch takes thing further by allowing you to create full blown applications directly in the database -- written in Javascript of course. It also integrates with nodejs quite nicely.</p>
+        </div>
+        <div class="date_time">
+          <h3>5/24</h3>
+          <h4>7:00p</h4>
+          <h5>24 rsvp</h5>
+        </div>
+      </div>
+    </div><!-- end lc -->
   </div>
 </body>
 </html>
