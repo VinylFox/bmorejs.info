@@ -1,8 +1,9 @@
-=== BmoreJS.info
-
+BmoreJS.info
+===
   
 
-== Todos:
+Todos:
+---
 
 * Adding twitter feed
 * Adding location info
