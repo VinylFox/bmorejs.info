@@ -1,41 +1,23 @@
-var MeetupAPI = {
-  dependencies: {
-    iCanHaz: ["https://github.com/andyet/ICanHaz.js/raw/master/ICanHaz.min.js", "ICanHaz.js"],
-    date: ["date.js"],
-    jquery: ["https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js", "jquery.js"]
-	// Also, callers should ensure that ich.meetupEventView({}) is implemented, for MeetupAPI.render to run.
+var BmoreJS = {
+  showEvents: function(){
+    // Get upcoming events.
+    // (generate signed request urls using the meetup api console: http://www.meetup.com/meetup_api/console/)
+    var signed_request = "http://api.meetup.com/2/events?group_id=1358121&status=upcoming&order=time&desc=false&offset=0&format=json&page=2&fields=&sig_id=7982375&sig=bbaffddd7a0921bb4c29e155b6a057967c65513b";
+    $.getJSON(signed_request + '&callback=?', this.renderEvents);
   },
 
-  getEvents: function(){
-	//This doesn't seem to be making the requests correctly. Needs more attention.
-    $.getJSON("api/meetup.json", MeetupAPI.onCollect); 
-  },
-  
-  onCollect: function(meetupFeed){
-    $(document).ready(function(){ 
-      MeetupAPI.collection = meetupFeed;
-      MeetupAPI.render();
+  renderEvents: function(json){
+    var meetupContainer = $("#events");
+    $.map(json.results, function(e) {
+      // render the ICanHas template
+      return meetupContainer.append(ich.meetupEventView(BmoreJS.enhanceMeetupAPIResults(e)));
     });
-  },
-  
-  parseMeetup: function(data){
-    //"Tue May 24 19:00:00 EDT 2011" -> "May 24 19:00:00"
-    var date_chomped = data["time"].split(" ").slice(1,4).join(" ");
-    var date = Date.parse(date_chomped);
-    var meetupData= {
-     rsvps: data["rsvpcount"],
-     day: date.toString("M/d"),
-     hour: date.toString("h:mmp"),
-     description: data["description"], // Use {{{}}} because this has inline html
-     name: data["name"]
-    };
-    return meetupData;
   },
 
-  render: function(){
-    var meetupContainer = $("#lc"); //[TODO] pull this out into the constructor
-    var meetupViews = $.map(MeetupAPI.collection["results"], function(apiEventData){
-      return meetupContainer.append(ich.meetupEventView(MeetupAPI.parseMeetup(apiEventData)));
-    });
+  enhanceMeetupAPIResults: function(json){
+    // make some pretty date formats using date.js
+    json.start_date = new Date(json.time).toString("M/d");
+    json.start_time = new Date(json.time).toString("h:mmp");
+    return json;
   }
 };

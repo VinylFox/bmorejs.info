@@ -11,9 +11,13 @@ body{
   width:920px;
   height:300px;
 }
-#lc{
+#events{
   padding:20px;
   width:600px;
+  float:left;
+}
+#tweets{
+  width:250px;
   float:left;
 }
 .meetup{
@@ -24,6 +28,9 @@ body{
   font-size:26px;
   font-weight:bold;
   margin-bottom:20px;
+}
+.meetup h2 a{
+  color:#C13008;
 }
 .meetup h3{
   font-size:60px;
@@ -43,11 +50,15 @@ body{
   line-height:16px;
   color:#666;
   font-size:14px;
+  margin-top:6px;
 }
 
 .meetup .descript{
   float:right;
   width:450px;
+}
+.meetup strong{
+  font-weight:bold;
 }
 .meetup .date_time{
   float:left;
