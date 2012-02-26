@@ -5,7 +5,7 @@ body{
 #wrapper{
   width:920px;
   margin:0 auto;
-  padding:20px;
+  padding:20px 0 0 0;
 }
 #mast{
   width:920px;
@@ -69,4 +69,25 @@ body{
   width:240px;
   padding:20px;
   float:right;
+}
+br { clear: both; }
+#footer{
+  border-top:1px solid #E44C23;
+  padding:50px 0;
+  text-align:center;
+  color:#fff;
+  text-shadow: 0 1px 0 #000;
+  background: #F16427; /* old browsers */
+  background: -moz-linear-gradient(top, #F16427 1%, #E44C23 100%); /* firefox */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#F16427), color-stop(100%,#E44C23)); /* webkit */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F16427', endColorstr='#E44C23',GradientType=0 ); /* ie */
+}
+#footer a {
+  color:#fff;
+}
+#footer p{
+  margin-bottom:10px;
+}
+#footer p:last-child{
+  margin-bottom:0;
 }
