@@ -2,11 +2,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
   <title>bmore.js - Baltimore JavaScript Meetup</title>
-  <meta name="description" content="BMoreJS">
-  <meta name="author" content="">
-
+  <meta name="description" content="We meet monthly in Baltimore to present and discuss JavaScript topics.">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="static/css/reset.css">
   <link rel="stylesheet" href="static/css/style.css">
@@ -15,46 +12,61 @@
 <body>
   <div id="wrapper">
     <div id="mast">
-      <img src="static/images/bmorejs_mast.png" />
-    </div><!-- end mast-->
-    <div id="content">
-      <div id="lc">
-        <div class="meetup">
-          <div class="descript">
-            <h2>Practical CouchDB with Mark Headd</h2>
-            <p>CouchDB is a great little NoSQL document store. Like many other NoSQL solutions, it uses Javascript for it's map-reduce / view code. Couch takes thing further by allowing you to create full blown applications directly in the database -- written in Javascript of course. It also integrates with nodejs quite nicely.</p>
-          </div>
-          <div class="date_time">
-            <h3>5/24</h3>
-            <h4>7:00p</h4>
-            <h5>24 rsvp</h5>
-          </div>
-        </div>
-      </div><!-- end lc -->
-      <div id="rc">
-      </div><!-- end rc -->
-    </div><!-- end content -->
-  </div><!--end wrapper-->
-<script type="application/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-<script type="application/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+      <img src="static/images/bmorejs_mast.png" alt="bmore.js baltimore javascript meetup group"/>
+    </div>
+    <div id="events"></div>
+    <div id="tweets">
+      <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+      <script>
+      new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 5,
+        interval: 30000,
+        width: 250,
+        height: 300,
+        theme: {
+          shell: {
+            background: '#f16327',
+            color: '#ffffff'
+          },
+          tweets: {
+            background: '#ffffff',
+            color: '#333333',
+            links: '#C13008'
+          }
+        },
+        features: {
+          scrollbar: false,
+          loop: false,
+          live: false,
+          behavior: 'all'
+        }
+      }).render().setUser('bmorejs').start();
+      </script>
+    </div>
+  </div>
+
+<script type="application/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="application/javascript" src="static/js/vendor/ICanHaz.min.js"></script>
+<script type="application/javascript" src="static/js/vendor/date.js"></script>
 <script type="application/javascript" src="static/js/site.js"></script>
 <script type="application/javascript">
-  $(document).ready(function(){
-    MeetupAPI.getEvents();
+  $(document).ready(function() {
+    BmoreJS.showEvents();
   });
 </script>
 
 <script id="meetupEventView" type="text/html">
 <div class="meetup">
   <div class="descript">
-    <h2>{{name}}</h2>
+    <h2><a href="{{event_url}}">{{name}}</a></h2>
     {{{description}}}
   </div>
   <div class="date_time">
-    <h3>{{day}}</h3>
-    <h4>{{hour}}</h4>
-    <h5>{{rsvps}} rsvp</h5>
+    <h3>{{start_date}}</h3>
+    <h4>{{start_time}}</h4>
+    <h5>{{yes_rsvp_count}} rsvps</h5>
   </div>
 </div>
 </script>
