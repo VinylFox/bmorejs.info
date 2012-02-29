@@ -23,6 +23,9 @@ body{
 .meetup{
   margin-bottom:40px;
 }
+.meetup:last-child{
+  margin-bottom:10px;
+}
 .meetup h2{
   color:#e44d26;
   font-size:26px;
@@ -65,12 +68,25 @@ body{
   text-align:right;
   width:120px;
 }
-#rc{
-  width:240px;
-  padding:20px;
-  float:right;
-}
 br { clear: both; }
+a#directions_control{
+  display:none;
+  padding:20px 0;
+  font-size: 32px;
+  font-weight: bold;
+  text-align:center;
+  color:#fff;
+  text-shadow: 0 1px 0 #000;
+  text-decoration: none;
+  text-align: center;
+  background: #F16427;
+}
+#map_canvas {
+  display: none;
+  width: 900px;
+  height: 900px;
+  margin: 20px 0;
+}
 #footer{
   border-top:1px solid #E44C23;
   padding:50px 0;
