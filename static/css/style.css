@@ -69,6 +69,24 @@ body{
   width:120px;
 }
 br { clear: both; }
+a#directions_control{
+  display:none;
+  padding:20px 0;
+  font-size: 32px;
+  font-weight: bold;
+  text-align:center;
+  color:#fff;
+  text-shadow: 0 1px 0 #000;
+  text-decoration: none;
+  text-align: center;
+  background: #F16427;
+}
+#map_canvas {
+  display: none;
+  width: 900px;
+  height: 900px;
+  margin: 20px 0;
+}
 #footer{
   border-top:1px solid #E44C23;
   padding:50px 0;
