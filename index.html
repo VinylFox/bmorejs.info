@@ -5,17 +5,27 @@
   <title>bmore.js - Baltimore JavaScript Meetup</title>
   <meta name="description" content="We meet monthly in Baltimore to present and discuss JavaScript topics.">
   <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/reset.css">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
+	<div class="navbar">
+		<div class="navbar-inner">
+	    	<div class="container">
+	        	<div class="nav">
+	          	<a class="brand" href="/">
+	            	<img src="static/images/jslogo_50px.png" alt="bmore.js: baltimore javascript meetup group"/>
+	            </a>      
+	        	</div>
+	      </div>
+			</div>
+	</div>
+
   <a id="directions_control" href="#map_canvas">Get directions to today's meetup!</a>
   <div id="wrapper">
     <div id="map_canvas"></div>
-    <div id="mast">
-      <img src="static/images/bmorejs_mast.png" alt="bmore.js: baltimore javascript meetup group"/>
-    </div>
     <div id="events"></div>
     <div id="tweets">
       <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
