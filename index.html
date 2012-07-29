@@ -5,8 +5,8 @@
   <title>bmore.js - Baltimore JavaScript Meetup</title>
   <meta name="description" content="We meet monthly in Baltimore to present and discuss JavaScript topics.">
   <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="static/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 
@@ -21,60 +21,46 @@
 								</a>
 						  </li>
 	          	<li class="active">
-								<a href="#">Home</a>
+								<a href="index.html">Home</a>
 	            </li>	
 	          	<li>
-								<a href="#">Contact</a>
-	            </li>
-	          	<li>
-								<a href="#">Media</a>
+								<a href="contact.html">Contact</a>
 	            </li>
 	          </div>
 					<div class="nav pull-right">	
+						<li>
+							<a href="http://vimeo.com/bmorejs">Video</a>
+            </li>	
 						<li class="span5">
-							<a href="#">View Our Meetup Page</a>
+							<a href="http://www.meetup.com/baltimore-dc-javascript-users/">View Our Meetup Page</a>
 	           </li>
 	        </div>
 	      </div>
 			</div>
 	</div>
 
-  <a id="directions_control" href="#map_canvas">Get directions to today's meetup!</a>
-  <div id="wrapper">
-    <div id="map_canvas"></div>
-    <div id="events"></div>
-    <div id="tweets">
-      <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-      <script>
-      new TWTR.Widget({
-        version: 2,
-        type: 'profile',
-        rpp: 5,
-        interval: 30000,
-        width: 250,
-        height: 300,
-        theme: {
-          shell: {
-            background: '#f16327',
-            color: '#ffffff'
-          },
-          tweets: {
-            background: '#ffffff',
-            color: '#333333',
-            links: '#C13008'
-          }
-        },
-        features: {
-          scrollbar: false,
-          loop: false,
-          live: false,
-          behavior: 'all'
-        }
-      }).render().setUser('bmorejs').start();
-      </script>
+	<div id="container span12">
+		<div class="row">
+		  <div class="span12 offset4 space_bottom">
+				<h1>Baltimore JS<h1><h3><em>Meet local JavaScripters and share knowledge.</em></h1>
+			</div>
+		</div>
+
+	  <div class="row">
+      <div class="span12 offset4">
+				<div class="span5 offset1 space_bottom">
+					<h2>Check out our upcoming events:</h2>
+				</div>
+				<a id="directions_control" href="#map_canvas">Get directions to today's meetup!</a>
+				<div id="map_canvas"></div>
+		    <div id="events" class="span8"></div>
+			</div>
     </div>
-    <br/>
   </div>
+	</div>
+
+  
+
   <div id="footer">
     <p>bmore.js meets in baltimore city near the end of every month. rsvp at <a href="http://www.meetup.com/baltimore-dc-javascript-users/">meetup.com</a>.</p>
     <br/>
@@ -93,12 +79,12 @@
 </script>
 
 <script id="meetupEventView" type="text/html">
-<div class="meetup">
-  <div class="descript">
+<div class="meetup row">
+  <div class="descript span6">
     <h2><a href="{{event_url}}">{{name}}</a></h2>
     {{{description}}}
   </div>
-  <div class="date_time">
+  <div class="date_time span2">
     <h3>{{start_date}}</h3>
     <h4>{{start_time}}</h4>
     <h5>{{yes_rsvp_count}} rsvps</h5>
