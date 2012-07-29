@@ -114,15 +114,20 @@ a#directions_control{
   color:#fff;
   text-shadow: 0 1px 0 #000; 
   */
-  background: #F16427; /* old browsers */
+  
+  /*background: #F16427; /* old browsers */ 
   
   /*background: -moz-linear-gradient(top, #E44C23 100%, #F16427 1%); /* firefox */
   /*background: -webkit-gradient(linear, left top, left bottom, color-stop(100%,#E44C23), color-stop(1%,#F16427)); /* webkit */
   /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E44C23', endColorstr='#F16427',GradientType=0 ); /* ie */
 }
 
-.brand img{
-  float: left;
-  margin-left: 50px;
-  padding-right: 10px;
+.brand img {
+  float: right;
+  padding-right: 20px;
+  margin-top: -3px;
+}
+
+.nav li{
+  margin-right:10px;
 }
