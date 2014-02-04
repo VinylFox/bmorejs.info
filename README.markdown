@@ -8,5 +8,4 @@ Todos:
 * Contact info
 * Logo
 * bring in photos from meetup api
-* link to vimeo videos: [http://vimeo.com/bmorejs]()
 * build responsive mobile layout
